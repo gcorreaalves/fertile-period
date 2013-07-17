@@ -6,3 +6,42 @@ body {
 a {
   color: #00B7FF;
 }
+
+#box-calendario{
+	display: table;
+	> div{
+		padding:0 20px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+#calendario{
+	width:800px;
+	margin:0 auto;
+	display:table;
+}
+.mes{
+	width:50%;
+	display: table-cell;
+	text-align: center;
+	> div{
+		text-align: left;
+		> div{
+			width:13.78%;
+			text-align: center;
+			display: inline-block;
+			padding:5% 0;
+			border:1px solid #ccc;
+		} 
+	} 
+	.fertDay{
+		background: #ccc;
+	}
+	.periodFertDay{
+		background: #f2f2f2;
+	}
+	a{
+		text-decoration: none;
+	}
+}
