@@ -1,3 +1,6 @@
+var ConnectionHelper = require('./helpers/connection').ConnectionHelper;
+var PeriodController = require('./controllers/periodcontroller').PeriodController;
+var UserController 	 = require('./controllers/usercontroller').UserController;
 
 /**
  * Module dependencies.
@@ -28,8 +31,46 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var //Connection 	= new ConnectionHelper('db_fert', '127.0.0.1', 27017),
+	  Period 		  = new PeriodController(),
+	  User 		    = new UserController();
+
 app.get('/', routes.index);
-app.get('/users', user.list);
+
+app.get('/period/view', function(req, res) {  
+
+  Period.view({
+      date: req.param('data'), 
+      cicle: req.param('ciclo-menstrual'), 
+    }
+    ,function(error, period) {
+
+    res.render('period_view.jade',
+    { 
+      title  : 'Veja o Período',
+      period : period
+    });
+
+  });
+
+});
+
+app.get('/period/calendar-content', function (req, res) {
+
+  Period.view({
+      date: req.param('data'), 
+      cicle: req.param('ciclo-menstrual'), 
+    }
+    ,function(error, period) {
+
+    res.render('period_calendar.jade',
+    { 
+      period : period
+    });
+
+  });
+
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

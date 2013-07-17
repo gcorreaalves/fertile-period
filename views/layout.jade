@@ -3,5 +3,89 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")  
+    script
+     $(function() {     
+
+      var ajax = function(type, url, data, callback){
+
+        $.ajax({
+          type: type,
+          url: url,
+          data: data
+        }).done(function( data ) {
+           callback(data);
+        });
+
+      } 
+
+      $( "#calendario" ).find('.dias').find('a').on('click', function(e){
+
+        e.preventDefault();
+
+        var data  = $(this).data('data'),
+            ciclo = $('.ciclo-menstrual').val();
+
+        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
+
+          // do something
+
+        });
+
+      });
+
+      $('.seta-esquerda').on('click', function(e){
+        
+        e.preventDefault();
+        
+        var currentMonth = $('.mes').find('span').attr('title').split("/"),
+            month        = parseInt(currentMonth[0]),
+            year         = parseInt(currentMonth[1]),
+            data,
+            ciclo        = $('.ciclo-menstrual:checked').val(); 
+
+            if(month === 1){
+              month = 13;
+              year  = year-1;
+            }
+
+        data = "01/" + (parseInt(month)-1) + "/" + year;     
+
+        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
+
+          $('#calendario').html(output); 
+
+        });
+      
+      });
+
+      $('.seta-direita').on('click', function(e){
+        
+        e.preventDefault();
+        
+        var currentMonth = $('.mes').find('span').attr('title').split("/"),
+            month        = parseInt(currentMonth[0]),
+            year         = parseInt(currentMonth[1]),
+            data,
+            ciclo        = $('.ciclo-menstrual:checked').val(); 
+
+            if(month === 12){
+              month = 0;
+              year  = year+1;
+            }
+
+            data = "01/" + (parseInt(month)+1) + "/" + year;
+
+        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
+
+          $('#calendario').html(output); 
+
+        });
+      
+      });
+
+     });
+
+
   body
     block content

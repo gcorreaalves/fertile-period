@@ -1,0 +1,18 @@
+each values, key in period
+  div(class="mes") 
+    span(title="#{values.month.monthNumber}") #{values.month.monthText} 
+    div(class="tit-dias")
+      div Dom
+      div Seg
+      div Ter
+      div Qua
+      div Qui
+      div Sex
+      div Sab
+    div(class="dias")            
+      each days, key in values.days
+        div(class="#{days.detail}")
+          if (days.day == '')
+            a(href="#", title="") &nbsp;
+          else
+            a(href="#", title="#{days.date}") #{days.day}    

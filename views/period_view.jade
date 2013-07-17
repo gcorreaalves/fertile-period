@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  p Periodo to #{title}
+  label(for='ciclo') Ciclo Menstrual:  
+   input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="28", checked="true") 
+   | 28 
+   input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="34") 
+   | 34 
+
+  div(id="box-calendario")
+    div(class="seta seta-esquerda") 
+      a(href="#") &lt;
+    div(class="container-calendario")
+      div(id="calendario")
+        each values, key in period
+          div(class="mes") 
+            span(title="#{values.month.monthNumber}") #{values.month.monthText} 
+            div(class="tit-dias")
+              div Dom
+              div Seg
+              div Ter
+              div Qua
+              div Qui
+              div Sex
+              div Sab
+            div(class="dias")            
+              each days, key in values.days
+                div(class="#{days.detail}")
+                  if (days.day == '')
+                    a(href="#", title="") &nbsp;
+                  else
+                    a(href="#", title="#{days.date}") #{days.day}        
+    div(class="seta seta-direita") 
+      a(href="#") &gt;
