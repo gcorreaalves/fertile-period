@@ -19,11 +19,9 @@ a {
 #calendario{
 	width:800px;
 	margin:0 auto;
-	display:table;
 }
 .mes{
-	width:50%;
-	display: table-cell;
+	width:100%;
 	text-align: center;
 	> div{
 		text-align: left;
@@ -31,17 +29,40 @@ a {
 			width:13.78%;
 			text-align: center;
 			display: inline-block;
-			padding:5% 0;
+			padding:0;
 			border:1px solid #ccc;
 		} 
 	} 
+	.hidden-month{
+		display:none;
+	}
+	.tit-dias{
+		div{
+			padding:2% 0;
+		}
+	}
+	.menstruationDay{
+		background: #F2DEDE;
+		a{
+			color: #c15e5e;
+		}
+	}
 	.fertDay{
-		background: #ccc;
+		background: #add39c;
+		a{
+			color:#6c915b;
+		}
 	}
 	.periodFertDay{
-		background: #f2f2f2;
+		background: #DFF0D8;
+		a{
+			color:#91af83;			
+		}
 	}
 	a{
 		text-decoration: none;
+		display: block;
+		width: 100%;
+		padding:35% 0;
 	}
 }

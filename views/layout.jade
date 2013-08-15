@@ -19,18 +19,21 @@ html
 
       } 
 
-      $( "#calendario" ).find('.dias').find('a').on('click', function(e){
+      $("#calendario").on('click', '.dias a', function(e){
 
         e.preventDefault();
 
-        var data  = $(this).data('data'),
-            ciclo = $('.ciclo-menstrual').val();
+        var data  = $(this).attr('title'),
+            ciclo = $('.ciclo-menstrual:checked').val();
 
-        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
+        if(data){
 
-          // do something
+          ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
 
-        });
+            $('#calendario').html(output); 
+
+          });
+        }
 
       });
 
@@ -38,7 +41,7 @@ html
         
         e.preventDefault();
         
-        var currentMonth = $('.mes').find('span').attr('title').split("/"),
+        var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
             month        = parseInt(currentMonth[0]),
             year         = parseInt(currentMonth[1]),
             data,
@@ -49,7 +52,7 @@ html
               year  = year-1;
             }
 
-        data = "01/" + (parseInt(month)-1) + "/" + year;     
+        data = "00/" + (parseInt(month)-1) + "/" + year;     
 
         ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
 
@@ -63,7 +66,7 @@ html
         
         e.preventDefault();
         
-        var currentMonth = $('.mes').find('span').attr('title').split("/"),
+        var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
             month        = parseInt(currentMonth[0]),
             year         = parseInt(currentMonth[1]),
             data,
@@ -74,10 +77,11 @@ html
               year  = year+1;
             }
 
-            data = "01/" + (parseInt(month)+1) + "/" + year;
+            data = "00/" + (parseInt(month)+1) + "/" + year;
 
         ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
 
+          console.log(output); 
           $('#calendario').html(output); 
 
         });
