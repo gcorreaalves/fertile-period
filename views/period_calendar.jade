@@ -1,18 +1,19 @@
-div(class="mes") 
-  div(class="tit-dias")
-    div Dom
-    div Seg
-    div Ter
-    div Qua
-    div Qui
-    div Sex
-    div Sab
-  div(class="dias") 
-    each values, key in period   
-      span(title="#{values.month.monthNumber}", class="hidden-month")        
-      each days, key in values.days
+each months, key in period
+  div(class="mes") 
+    p= months.month.monthText
+    div(class="tit-dias")
+      div Dom
+      div Seg
+      div Ter
+      div Qua
+      div Qui
+      div Sex
+      div Sab
+    div(class="dias") 
+      span(title="#{months.month.monthNumber}", class="hidden-month")        
+      each days, key in months.days
         div(class="#{days.detail}")
           if (days.day == '')
             a(href="#", title="") &nbsp;
           else
-            a(href="#", title="#{days.date}") #{days.day}   
+            a(href="#", title="#{days.date}") #{days.day}

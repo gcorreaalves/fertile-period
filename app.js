@@ -25,6 +25,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/components', express.static(__dirname + '/components'));
 
 // development only
 if ('development' == app.get('env')) {
@@ -35,19 +36,17 @@ var //Connection 	= new ConnectionHelper('db_fert', '127.0.0.1', 27017),
 	  Period 		  = new PeriodController(),
 	  User 		    = new UserController();
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
 
-app.get('/period/view', function(req, res) {  
+app.get('/', function(req, res) {  
 
   Period.view({
       date: req.param('data'), 
       cicle: req.param('ciclo-menstrual'), 
     }
     ,function(error, period) {
-
     res.render('period_view.jade',
     { 
-      title  : 'Veja o Período',
       period : period
     });
 
@@ -62,7 +61,6 @@ app.get('/period/calendar-content', function (req, res) {
       cicle: req.param('ciclo-menstrual'), 
     }
     ,function(error, period) {
-
     res.render('period_calendar.jade',
     { 
       period : period

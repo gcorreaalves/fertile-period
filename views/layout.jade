@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/components/bootstrap-assets/css/bootstrap.css')
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")  
     script
      $(function() {     
@@ -92,4 +93,14 @@ html
 
 
   body
-    block content
+    div(class="container")
+      header
+        nav
+          ul
+            li
+              a(href="#") Home
+            li
+              a(href="#") Home
+            li
+              a(href="#") Home
+      block content

@@ -1,7 +1,6 @@
 {
   "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.1-2",
   "scripts": {
     "start": "node app.js"
   },
@@ -9,5 +8,18 @@
     "express": "3.2.6",
     "jade": "*",
     "less-middleware": "*"
+  },
+  "subdomain": "mulherfertil",
+  "domains": [
+    "mulherfertil.com.br",
+    "www.mulherfertil.com.br"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }

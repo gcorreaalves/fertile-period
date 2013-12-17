@@ -1,36 +1,78 @@
 extends layout
 
 block content
-  h1= title
-  p Periodo to #{title}
-  label(for='ciclo') Ciclo Menstrual:  
-   input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="28", checked="true") 
-   | 28 
-   input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="34") 
-   | 34 
+  section
+    h2 Processo da ovulação
+  section
+    h2 O que é o Período Fértil?
+    p.
+      O período fértil feminino ocorre quando os óvulos tornam-se maduros e prontos para receber o espermatozoide e, então, dar início a uma gravidez. Para calcular o período fértil, recomenda-se anotar, durante 3 meses consecutivos, os dias da menstruação num calendário e contar quantos dias há de intervalo entre uma menstruação e outra.
+    p.
+      O período fértil feminino dá-se durante 3 dias, que ocorrem no 14º dia após a menstruação. Conta-se a partir do primeiro dia em que a menstruação desceu, numa mulher cujo intervalo entre as menstruações dure 28 dias.
+    p.
+      Só é possível calcular com certeza o período fértil se a mulher tiver um ciclo menstrual regular, ou seja, se os intervalos entre as suas menstruações forem sempre de 28 dias, ou sempre de 30 dias, ou sempre de 31 dias, e assim por diante.
 
-  div(id="box-calendario")
-    div(class="seta seta-esquerda") 
-      a(href="#") &lt;
-    div(class="container-calendario")
-      div(id="calendario")
-          div(class="mes") 
-            div(class="tit-dias")
-              div Dom
-              div Seg
-              div Ter
-              div Qua
-              div Qui
-              div Sex
-              div Sab
-            div(class="dias") 
-              each values, key in period   
-                span(title="#{values.month.monthNumber}", class="hidden-month")        
-                each days, key in values.days
-                  div(class="#{days.detail}")
-                    if (days.day == '')
-                      a(href="#", title="") &nbsp;
-                    else
-                      a(href="#", title="#{days.date}") #{days.day}        
-    div(class="seta seta-direita") 
-      a(href="#") &gt;
+    h3 Cálcule seu Período Fértil
+    label(for='ciclo') Ciclo Menstrual:  
+     input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="28", checked="true") 
+     | 28 
+     input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="34") 
+     | 34 
+
+    div(id="box-calendario")
+      div(class="seta seta-esquerda") 
+        a(href="#") &lt;
+      div(class="container-calendario")
+        div(id="calendario")
+            each months, key in period
+              div(class="mes") 
+                p= months.month.monthText
+                div(class="tit-dias")
+                  div Dom
+                  div Seg
+                  div Ter
+                  div Qua
+                  div Qui
+                  div Sex
+                  div Sab
+                div(class="dias") 
+                  span(title="#{months.month.monthNumber}", class="hidden-month")        
+                  each days, key in months.days
+                    div(class="#{days.detail}")
+                      if (days.day == '')
+                        a(href="#", title="") &nbsp;
+                      else
+                        a(href="#", title="#{days.date}") #{days.day}        
+      div(class="seta seta-direita") 
+        a(href="#") &gt;
+  section
+    h2 6 Dicas de como ser fértil
+
+    h3 Evite a ansiedade 
+    p.
+      A nossa saúde emocional influência diretamente o estado de nosso corpo, por isso, tente evitar o máximo a ansiedade, estresse, e outros tipos de emoções fortes.
+
+    h3 Deixe de fumar  
+    p.
+      O cigarro contém substâncias prejudiciais a saúde e é causador de inúmeras doenças, o seu uso pode afetar tanto sua fertilidade quanto o feto no período da gestação.
+    
+    h3 Não consumir bebidas alcoólicas  
+    p.
+      O risco de aborto espontâneo quase dobra quando a gestante consome álcool. Sem falar que o álcool é uma substância que passa livremente pela pela placenta e, com muita facilidade chega ao feto. Uma vez que o fígado do bebê que está em formação metaboliza o álcool duas vezes mais lentamente que o fígado da sua mãe, isto é, o álcool permanece por mais tempo no organismo do bebê do que da sua mamãe.
+   
+    h3 Alimentar-se corretamente  
+    p.
+      Manter uma alimentação saudável, evitando comer comidas gordurosas, dando lugar a frutas e verduras e um fundamental para se tornar mais fértil.
+   
+    h3 Fazer atividade física regularmente  
+    p.
+      Fazer exercícios regulares pode aumentar bastante o bem estar e consequentemente trazer benefícios para mãe e bebê.
+   
+    h3 Tratar doenças
+    p.
+      Tratar qualquer doenças que possa interferir na gravidez, como endometriose, ovários policísticos ou a candidíase, por exemplo.
+
+    br
+    br
+    p.
+    <strong>Observação:</strong> É importante ressaltar que mesmo seguindo as dicas qualquer problema para engravidar deve-se procurar um médico especializado para uma avaliação clínica.

@@ -1,8 +1,5 @@
-var Calendar = function(){
-
-  this.months = 2;
-  this.calendarHTML = {};
-
+var Calendar = function () {
+  this.calendarHTML = null;
 }
 
 Calendar.prototype.setMonth = function(month){
@@ -17,114 +14,88 @@ Calendar.prototype.getDaysInMonth = function(month, year){
   return new Date(year, month, 0).getDate();
 }
 
-Calendar.prototype.build = function(month, year, fertPeriod, numMonthsCalendar){
+Calendar.prototype.build = function(month, year, fertPeriod){
 
-  var days          = this.getDaysInMonth(month, year),
-      currentDate   = new Date(year, (month-1), 1),
-      firstDay      = currentDate.getDay(),
-      blankDays     = firstDay,  
-      numMonths     = numMonthsCalendar || 1,  
-      objDays       = {},
-      dateAtribute  = '',
-      day           = '',
-      classDay      = '',
-      period        = fertPeriod,
+  var days           = this.getDaysInMonth(month, year),
+      currentDate    = new Date(year, (month-1), 1),
+      firstDay       = currentDate.getDay(),
+      lastDay        = (6 - new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDay()),
+      blankDays      = firstDay,   
+      objDays        = {},
+      dateAtribute   = '',
+      day            = '',
+      classDay       = '',
+      period         = fertPeriod,
+      totalDaysBlank = days+blankDays+lastDay,
       timestamp;
 
-    for(var i = 1; i <= (days+blankDays); i++){
+      console.log(lastDay);
 
-      if(numMonths < this.months){
+    for(var i = 1; i <= totalDaysBlank; i++){
 
-        if(i > blankDays){
+      if(i > blankDays && i <= (totalDaysBlank-lastDay)){
 
-          dateAtribute = (i - blankDays) + "/" + month + "/" + year;
-          day = (i - blankDays);
+        dateAtribute = (i - blankDays) + "/" + month + "/" + year;
+        day = (i - blankDays);
 
-        }else{
+      }else{
 
-          dateAtribute = "";
-          day = "";
+        dateAtribute = "";
+        day = "";
 
-        }
-
-      }else{       
-
-            if(i <= days){
-
-              dateAtribute = (i) + "/" + month + "/" + year;
-              day = (i);
-
-            }else{
-
-              dateAtribute = "";
-              day = "";
-
-            }
       }
       
       if(period){
 
         timestamp = new Date(year, month-1, day);
-        timestamp = timestamp.setDate(timestamp.getDate());
+        timestamp = timestamp.setDate(timestamp.getDate());        
 
-        if(timestamp >= period.fertPeriodInit && timestamp <= period.fertPeriodEnd){
+        if(timestamp >= period.fertPeriodInit && timestamp <= period.fertPeriodEnd && day){
 
-          if(period.fertDay == timestamp){
+          classDay = "periodFertDay";
+
+          if(period.fertDay === timestamp){
 
             classDay = "fertDay";
-
-          }else{
-
-            classDay = "periodFertDay";
 
           }
 
         }else{
 
-          if(period.menstruationDay == timestamp){
+          classDay = "normal";
+
+          if(period.menstruationDay === timestamp && day){
             
             classDay = "menstruationDay";   
-
-          }else{
-            
-            classDay = "normal";      
 
           }
 
         }
+
       }
 
       objDays[i] = {
-          day     : day, 
-          date    : dateAtribute, 
-          detail  : classDay
-        };
+        day     : day, 
+        date    : dateAtribute, 
+        detail  : classDay
+      };
+
     }
     
     var monthText = this.setMonth(month);
 
-    this.calendarHTML[monthText] = {
+    this.calendarHTML = {
       month : {monthNumber : month + '/' + year, monthText : this.setMonth(month)},
       days  : objDays
     }
-
-  if(this.months > numMonths){
-
-    this.build((parseInt(month)+1), year, null, (numMonths + 1));
-
-  }
-
-  //return this.calendarHTML;
 }
 
 Calendar.prototype.getCalendar = function(month, year, fertPeriod){
   
-  this.build(month, year, fertPeriod, 1);
+  this.build(month, year, fertPeriod);
 
   return this.calendarHTML;
 }
-
-var periodCounter = 1;
 
 PeriodController = function(){};
 
@@ -138,7 +109,11 @@ PeriodController.prototype.view = function(data, callback){
 
     var period        = this.calcPeriod(data),
         calendar      = new Calendar(),
-        calendarBuilt = calendar.getCalendar(period.month, period.year, period.period);
+        calendarBuilt = [];      
+
+      for(var i = 0; i < 2; i++){
+        calendarBuilt.push(calendar.getCalendar(parseInt(period.month, 10)+i, period.year, period.period));
+      }
     
     callback(null, calendarBuilt);
 
@@ -146,7 +121,11 @@ PeriodController.prototype.view = function(data, callback){
 
     var period    = this.calcPeriod({date: "01/01/2013", cicle: 28}),
     calendar      = new Calendar(),
-    calendarBuilt = calendar.getCalendar(period.month, period.year);
+    calendarBuilt = [];
+
+    for(var i = 0; i < 2; i++){
+      calendarBuilt.push(calendar.getCalendar(parseInt(period.month, 10)+i, period.year));      
+    }
     
     callback(null, calendarBuilt); 
 

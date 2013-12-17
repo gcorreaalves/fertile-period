@@ -1,0 +1,7 @@
+{
+  "name": "fertile-period",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-assets": "~3.0.3"
+  }
+}
