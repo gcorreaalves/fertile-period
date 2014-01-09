@@ -93,14 +93,21 @@ html
 
 
   body
-    div(class="container")
-      header
-        nav
-          ul
-            li
-              a(href="#") Home
-            li
-              a(href="#") Home
-            li
-              a(href="#") Home
-      block content
+    div(class="site")
+      div(id="full-header")
+        div(class="container")
+          header
+            div(class="row")
+              div(class="col-md-3")
+                h1(class="logo")
+                  Mulher Fértil
+              div(class="col-md-9")
+                nav
+                  ul(class="menu row list-unstyled")
+                    li(class="col-md-4 link-process")
+                      a(href="#process") Processo de Ovulação
+                    li(class="col-md-4 link-period")
+                      a(href="#period") Período Fértil
+                    li(class="col-md-4 link-tips")
+                      a(href="#tips") Dicas e cuidados
+        block content

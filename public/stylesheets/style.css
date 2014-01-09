@@ -1,25 +1,83 @@
+/* VARIABLES */
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: #00B7FF;
+p {
+  color: #777777;
+  font-size: 16px;
 }
-#box-calendario {
-  display: table;
+a {
+  color: #ec1e79;
+}
+.site h1,
+.site h2,
+.site h3 {
+  color: #ffffff;
+}
+#full-header {
+  border-top: 5px solid #ec1e79;
+}
+#full-header h1 {
+  text-indent: -9999px;
+  width: 197px;
+  height: 104px;
+  background: url('../images/logo-mulher-fertil.jpg');
+}
+.menu {
+  padding-top: 50px;
+}
+.menu li {
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 5px solid #fff;
+}
+.menu li a {
+  font-size: 18px;
+  color: #ec1e79;
+}
+.menu li a:hover {
+  transition: all 200ms ease-in;
+  color: #970d4a;
+  text-decoration: none;
+}
+.menu .link-process {
+  border-bottom-color: #faaf3a;
+}
+.menu .link-period {
+  border-bottom-color: #d9df20;
+}
+.menu .link-tips {
+  border-bottom-color: #e66658;
+}
+section h2 {
+  margin-bottom: 20px;
+}
+#process {
+  background: #faaf3a;
+  padding: 20px 0;
+}
+#period {
+  background: #ffffff;
+  padding: 20px 0;
+}
+#period h2 {
+  color: #d9df20;
+}
+#period h3 {
+  color: #616161;
+  padding-top: 30px;
+}
+#period p {
+  margin-bottom: 20px;
+}
+#tips {
+  background: #e66658;
+  padding: 20px 0;
 }
 #box-calendario > div {
   padding: 0 20px;
-  display: table-cell;
-  vertical-align: middle;
-}
-#calendario {
-  width: 800px;
-  margin: 0 auto;
 }
 .mes {
-  width: 400px;
-  float: left;
   text-align: center;
 }
 .mes > div {
@@ -30,35 +88,59 @@ a {
   text-align: center;
   display: inline-block;
   padding: 0;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
+  background: #d9df20;
+  color: #ffffff;
+  font-size: 16px;
+}
+.mes > div > div:hover {
+  background: #aeb21a;
 }
 .mes .hidden-month {
   display: none;
 }
 .mes .tit-dias div {
   padding: 2% 0;
+  font-weight: bold;
+}
+.mes .tit-dias div:hover {
+  background: #d9df20;
 }
 .mes .menstruationDay {
-  background: #F2DEDE;
+  background: #ec1e79;
+}
+.mes .menstruationDay:hover {
+  background: #ec1e79;
 }
 .mes .menstruationDay a {
-  color: #c15e5e;
+  color: #ffffff;
 }
 .mes .fertDay {
-  background: #add39c;
+  background: #c97c05;
+}
+.mes .fertDay:hover {
+  background: #c97c05;
 }
 .mes .fertDay a {
-  color: #6c915b;
+  color: #ffffff;
 }
 .mes .periodFertDay {
-  background: #DFF0D8;
+  background: #faaf3a;
+}
+.mes .periodFertDay:hover {
+  background: #faaf3a;
 }
 .mes .periodFertDay a {
-  color: #91af83;
+  color: #ffffff;
 }
 .mes a {
   text-decoration: none!important;
   display: block;
   width: 100%;
   padding: 35% 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+.mes a:hover {
+  color: #ffffff;
 }

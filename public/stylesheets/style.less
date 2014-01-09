@@ -1,28 +1,108 @@
+/* VARIABLES */
+@font: "Lucida Grande", Helvetica, Arial, sans-serif; 
+
+@defaultColor: #777777;
+@defaultFontSize: 16px;
+
+@linkColor: #ec1e79;
+
+@process: #faaf3a;
+@period: #d9df20;
+@tips: #e66658;
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px @font;
+}
+
+p{
+	color: @defaultColor;
+	font-size: @defaultFontSize;
 }
 
 a {
-  color: #00B7FF;
+  color: @linkColor;
 }
 
-#box-calendario{
-	display: table;
-	> div{
-		padding:0 20px;
-		display: table-cell;
-		vertical-align: middle;
+.site{
+	h1, h2, h3{
+		color:#ffffff;
+	}
+
+}
+
+#full-header{
+	border-top: 5px solid #ec1e79;
+	h1{
+		text-indent: -9999px;
+		width:197px; 
+		height:104px; 
+		background: url('../images/logo-mulher-fertil.jpg');
 	}
 }
 
-#calendario{
-	width:800px;
-	margin:0 auto;
+.menu{
+	padding-top: 50px;
+	li{
+		text-align: center;
+		padding-bottom: 5px;
+		border-bottom: 5px solid #fff;
+		a{
+			font-size: 18px;
+			color: @linkColor;
+			&:hover{
+				transition: all 200ms ease-in;
+				color:darken(@linkColor, 20%);
+				text-decoration: none;
+			}
+		}
+	}
+	.link-process{
+		border-bottom-color: @process;
+	}
+	.link-period{		
+		border-bottom-color: @period;
+	}
+	.link-tips{		
+		border-bottom-color: @tips;
+	}
 }
+
+section{
+	h2{
+		margin-bottom: 20px;
+	}
+}
+
+#process{
+	background: @process;
+	padding: 20px 0;
+}
+#period{
+	background: #ffffff;
+	padding: 20px 0;
+	h2{
+		color:@period;
+	}
+	h3{
+		color:#616161;
+		padding-top: 30px;
+	}
+	p{
+		margin-bottom: 20px;
+	}
+}
+#tips{
+	background: @tips;
+	padding: 20px 0;
+}
+
+#box-calendario{
+	> div{
+		padding:0 20px;
+	}
+}
+
 .mes{
-	width:400px;
-	float:left;
 	text-align: center;
 	> div{
 		text-align: left;
@@ -31,7 +111,13 @@ a {
 			text-align: center;
 			display: inline-block;
 			padding:0;
-			border:1px solid #ccc;
+			border:1px solid #ffffff;
+			background: #d9df20;
+			color: #ffffff;
+			font-size: 16px;
+			&:hover{
+				background: darken(#d9df20, 10%);
+			}
 		} 
 	} 
 	.hidden-month{
@@ -40,24 +126,37 @@ a {
 	.tit-dias{
 		div{
 			padding:2% 0;
+			font-weight: bold;
+			&:hover{
+				background: #d9df20;
+			}			
 		}
 	}
 	.menstruationDay{
-		background: #F2DEDE;
+		background: #ec1e79;
+		&:hover{
+			background: #ec1e79;
+		}
 		a{
-			color: #c15e5e;
+			color: #ffffff;
 		}
 	}
 	.fertDay{
-		background: #add39c;
+		background: darken(#faaf3a, 20%);
+		&:hover{
+			background: darken(#faaf3a, 20%);
+		}
 		a{
-			color:#6c915b;
+			color:#ffffff;
 		}
 	}
 	.periodFertDay{
-		background: #DFF0D8;
+		background: #faaf3a;
+		&:hover{
+			background: #faaf3a;
+		}
 		a{
-			color:#91af83;			
+			color:#ffffff;			
 		}
 	}
 	a{
@@ -65,5 +164,10 @@ a {
 		display: block;
 		width: 100%;
 		padding:35% 0;
+		color: #ffffff;
+		font-weight: bold;
+		&:hover{
+			color: #ffffff;
+		}
 	}
 }

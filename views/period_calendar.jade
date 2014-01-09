@@ -1,5 +1,5 @@
 each months, key in period
-  div(class="mes") 
+  div(class="mes col-md-6") 
     p= months.month.monthText
     div(class="tit-dias")
       div Dom
@@ -16,4 +16,4 @@ each months, key in period
           if (days.day == '')
             a(href="#", title="") &nbsp;
           else
-            a(href="#", title="#{days.date}") #{days.day}
+            a(href="#", title="#{days.date}") #{days.day}  
