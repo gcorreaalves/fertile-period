@@ -6,7 +6,17 @@ html
     link(rel='stylesheet', href='/components/bootstrap-assets/css/bootstrap.css')
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")  
     script(type="text/javascript").
-     $(function() {     
+     $(function() {   
+
+      $('.checkbox-fake').click(function(){
+          var _this = $(this),
+              _parent = _this.parent(),
+              _checkbox = _parent.find('input[type="checkbox"]');
+          
+          _parent.find('.input-checkbox').toggleClass('input-checkbox-checked');
+          _checkbox.attr("checked", !_checkbox.attr("checked"));
+      })
+
       var ajax = function(type, url, data, callback){
         $.ajax({
           type: type,
@@ -15,80 +25,53 @@ html
         }).done(function( data ) {
            callback(data);
         });
-
       } 
 
       $("#calendario").on('click', '.dias a', function(e){
-
         e.preventDefault();
-
         var data  = $(this).attr('title'),
             ciclo = $('.ciclo-menstrual:checked').val();
-
         if(data){
-
           ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-
             $('#calendario').html(output); 
-
           });
         }
-
       });
 
-      $('.seta-esquerda').on('click', function(e){
-        
-        e.preventDefault();
-        
+      $('.seta-esquerda').on('click', function(e){        
+        e.preventDefault();        
         var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
             month        = parseInt(currentMonth[0]),
             year         = parseInt(currentMonth[1]),
             data,
             ciclo        = $('.ciclo-menstrual:checked').val(); 
-
             if(month === 1){
               month = 13;
               year  = year-1;
             }
-
-        data = "00/" + (parseInt(month)-1) + "/" + year;     
-
+        data = "00/" + (parseInt(month)-1) + "/" + year;  
         ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-
           $('#calendario').html(output); 
-
-        });
-      
+        });      
       });
 
-      $('.seta-direita').on('click', function(e){
-        
-        e.preventDefault();
-        
+      $('.seta-direita').on('click', function(e){        
+        e.preventDefault();        
         var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
             month        = parseInt(currentMonth[0]),
             year         = parseInt(currentMonth[1]),
             data,
             ciclo        = $('.ciclo-menstrual:checked').val(); 
-
             if(month === 12){
               month = 0;
               year  = year+1;
             }
-
-            data = "00/" + (parseInt(month)+1) + "/" + year;
-
+        data = "00/" + (parseInt(month)+1) + "/" + year;
         ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-
-          console.log(output); 
           $('#calendario').html(output); 
-
-        });
-      
+        });      
       });
-
      });
-
 
   body
     div(class="site")

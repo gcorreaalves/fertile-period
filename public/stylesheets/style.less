@@ -124,6 +124,25 @@ section{
 }
 
 #box-calendario{
+	.seta{
+		a{
+			background: url('../images/arrows.png') no-repeat transparent;
+			display:block;
+			width:22px;
+			height: 30px;
+			margin-top: 200px;
+		}
+	}
+	.seta-esquerda{
+		a{
+			background-position: bottom left;
+		}
+	}
+	.seta-direita{
+		a{
+			background-position: bottom right;
+		}
+	}
 	> div{
 		padding:0 20px;
 	}
@@ -131,6 +150,12 @@ section{
 
 .mes{
 	text-align: center;
+	p{
+		font-size: 16px;
+		font-weight: bold;
+		color:@process;
+		margin-bottom: 5px!important;
+	}
 	> div{
 		text-align: left;
 		> div{

@@ -100,11 +100,30 @@ section h2 {
 #tips .alert-warning p {
   color: #8a6d3b;
 }
+#box-calendario .seta a {
+  background: url('../images/arrows.png') no-repeat transparent;
+  display: block;
+  width: 22px;
+  height: 30px;
+  margin-top: 200px;
+}
+#box-calendario .seta-esquerda a {
+  background-position: bottom left;
+}
+#box-calendario .seta-direita a {
+  background-position: bottom right;
+}
 #box-calendario > div {
   padding: 0 20px;
 }
 .mes {
   text-align: center;
+}
+.mes p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #faaf3a;
+  margin-bottom: 5px!important;
 }
 .mes > div {
   text-align: left;

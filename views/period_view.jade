@@ -22,10 +22,13 @@ block content
          | 28 
          input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="34") 
          | 34 
+        input(type="checkbox", name="segmented", value="true")
+        span(class="checkbox-fake input-checkbox")
+        span(class="checkbox-fake") Segmentar
 
         div(id="box-calendario", class="row")
           div(class="seta seta-esquerda col-md-1") 
-            a(href="#") &lt;
+            a(href="#")
           div(class="container-calendario col-md-10")
             div(id="calendario", class="row")
                 each months, key in period
@@ -48,7 +51,7 @@ block content
                           else
                             a(href="#", title="#{days.date}") #{days.day}        
           div(class="seta seta-direita col-md-1") 
-            a(href="#") &gt;
+            a(href="#")
   section
     div(id="tips")
       div(class="container")
