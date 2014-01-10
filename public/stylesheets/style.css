@@ -58,7 +58,7 @@ section h2 {
 }
 #period {
   background: #ffffff;
-  padding: 20px 0;
+  padding: 20px 0 50px 0;
 }
 #period h2 {
   color: #d9df20;
@@ -73,6 +73,32 @@ section h2 {
 #tips {
   background: #e66658;
   padding: 20px 0;
+}
+#tips h2 {
+  margin-bottom: 30px;
+}
+#tips h3 {
+  margin-top: 0;
+}
+#tips p {
+  color: #fff;
+}
+#tips .row {
+  display: table;
+  margin-bottom: 40px;
+}
+#tips .row div {
+  min-height: 105px;
+}
+#tips .col-md-2 {
+  text-align: center;
+}
+#tips .alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+#tips .alert-warning p {
+  color: #8a6d3b;
 }
 #box-calendario > div {
   padding: 0 20px;
@@ -143,4 +169,15 @@ section h2 {
 }
 .mes a:hover {
   color: #ffffff;
+}
+.footer {
+  padding: 30px 0;
+}
+.footer p {
+  text-align: center;
+  font-size: 12px;
+  color: #ec1e79;
+}
+.footer img {
+  padding-right: 20px;
 }
