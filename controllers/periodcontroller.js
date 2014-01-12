@@ -29,13 +29,17 @@ Calendar.prototype.build = function(month, year, fertPeriod){
       totalDaysBlank = days+blankDays+lastDay,
       timestamp;
 
-      console.log(lastDay);
-
     for(var i = 1; i <= totalDaysBlank; i++){
 
       if(i > blankDays && i <= (totalDaysBlank-lastDay)){
 
-        dateAtribute = (i - blankDays) + "/" + month + "/" + year;
+        var monthTwoChar = month;
+
+        if(month < 10){
+          monthTwoChar = "0"+month;
+        }
+
+        dateAtribute = (i - blankDays) + "/" + monthTwoChar + "/" + year;
         day = (i - blankDays);
 
       }else{
@@ -119,7 +123,10 @@ PeriodController.prototype.view = function(data, callback){
 
   }else{
 
-    var period    = this.calcPeriod({date: "01/01/2013", cicle: 28}),
+    var today = new Date();
+    today = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+    var period    = this.calcPeriod({date: today, cicle: 28}),
     calendar      = new Calendar(),
     calendarBuilt = [];
 

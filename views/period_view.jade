@@ -2,11 +2,20 @@ extends layout
 
 block content
   section
-    div(id="process")
+    div(id="banner", class="slide")
+      ul(class="list-unstyled")
+        li
+          img(src="images/loira.jpg", alt="Loira")
+        li
+          img(src="images/negra.jpg", alt="Negra")
+        li
+          img(src="images/morena.jpg", alt="Morena")
+  section
+    div(id="process", class="slide")
       div(class="container")
         h2 Processo da ovulação
   section
-    div(id="period")
+    div(id="period", class="slide")
       div(class="container")
         h2 O que é o Período Fértil?
         p.
@@ -17,14 +26,15 @@ block content
           Só é possível calcular com certeza o período fértil se a mulher tiver um ciclo menstrual regular, ou seja, se os intervalos entre as suas menstruações forem sempre de 28 dias, ou sempre de 30 dias, ou sempre de 31 dias, e assim por diante.
 
         h3 Cálcule seu Período Fértil
-        label(for='ciclo') Ciclo Menstrual:  
-         input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="28", checked="true") 
-         | 28 
-         input(type="radio", class="ciclo-menstrual", name="ciclo-menstrual", value="34") 
-         | 34 
-        input(type="checkbox", name="segmented", value="true")
-        span(class="checkbox-fake input-checkbox")
-        span(class="checkbox-fake") Segmentar
+        label(for='ciclo', class="form-inline") Ciclo Menstrual: 
+         select(name="ciclo-menstrual", class="ciclo-menstrual form-control") 
+          option(value="28") 28
+          option(value="29") 29
+          option(value="30") 30
+          option(value="31") 31
+          option(value="32") 32
+          option(value="33") 33
+          option(value="34") 34
 
         div(id="box-calendario", class="row")
           div(class="seta seta-esquerda col-md-1") 
@@ -49,11 +59,11 @@ block content
                           if (days.day == '')
                             a(href="#", title="") &nbsp;
                           else
-                            a(href="#", title="#{days.date}") #{days.day}        
+                            a(href="#", title="#{days.date}", data-toggle="#{days.date}") #{days.day}        
           div(class="seta seta-direita col-md-1") 
             a(href="#")
   section
-    div(id="tips")
+    div(id="tips", class="slide")
       div(class="container")
         h2 6 Dicas de como ser fértil
 
