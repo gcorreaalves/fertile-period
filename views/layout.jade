@@ -5,92 +5,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/components/bootstrap-assets/css/bootstrap.css')
     script(src="/components/jquery/jquery.min.js")  
-    script(src="/js/jquery.localscroll-1.2.7-min.js")  
-    script(src="/js/jquery.parallax-1.1.3.js")  
-    script(src="/js/jquery.scrollTo-1.4.2-min.js")  
-    script(type="text/javascript").
-     $(function() { 
-
-      (function(){
-      
-        var elements    = $('#banner').find('li'),
-          sizeBanners = elements.length,
-          banner      = 0;
-          lastBanner  = null;
-
-        elements.hide();
-      
-        var interval = window.setInterval(changePicture, 5000);
-        function changePicture() {                
-          elements.eq(lastBanner).fadeOut(1000);
-          elements.eq(banner).fadeIn(800);        
-          lastBanner = banner;
-          if(banner < (sizeBanners-1)){
-            banner++;
-          }else{
-            banner = 0;
-          }        
-        }
-
-        changePicture();
-
-      })()     
-
-      var ajax = function(type, url, data, callback){
-        $.ajax({
-          type: type,
-          url: url,
-          data: data
-        }).done(function( data ) {
-           callback(data);
-        });
-      } 
-
-      $("#calendario").on('click', '.dias a', function(e){
-        e.preventDefault();
-        var data  = $(this).attr('title'),
-            ciclo = $('.ciclo-menstrual').val();
-        if(data){
-          ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-            $('#calendario').html(output); 
-          });
-        }
-      });
-
-      $('.seta-esquerda').on('click', function(e){        
-        e.preventDefault();        
-        var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
-            month        = parseInt(currentMonth[0]),
-            year         = parseInt(currentMonth[1]),
-            data,
-            ciclo        = $('.ciclo-menstrual').val(); 
-            if(month === 1){
-              month = 13;
-              year  = year-1;
-            }
-        data = "00/" + (parseInt(month)-1) + "/" + year;  
-        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-          $('#calendario').html(output); 
-        });      
-      });
-
-      $('.seta-direita').on('click', function(e){        
-        e.preventDefault();        
-        var currentMonth = $('.hidden-month:eq(0)').attr('title').split("/"),
-            month        = parseInt(currentMonth[0]),
-            year         = parseInt(currentMonth[1]),
-            data,
-            ciclo        = $('.ciclo-menstrual').val(); 
-            if(month === 12){
-              month = 0;
-              year  = year+1;
-            }
-        data = "00/" + (parseInt(month)+1) + "/" + year;
-        ajax("GET", "/period/calendar-content", { 'ciclo-menstrual': ciclo, data: data }, function(output){
-          $('#calendario').html(output); 
-        });      
-      });
-     });
+    script(src="/javascripts/period.js")      
 
   body
     div(class="site")
@@ -104,9 +19,10 @@ html
               div(class="col-md-9")
                 nav
                   ul(class="menu row list-unstyled")
-                    li(class="col-md-4 link-process")
-                      a(href="#process") Processo de Ovulação
-                    li(class="col-md-4 link-period")
+                    //
+                      li(class="col-md-4 link-process")
+                        a(href="#process") Processo de Ovulação
+                    li(class="col-md-4 col-md-offset-4 link-period")
                       a(href="#period") Período Fértil
                     li(class="col-md-4 link-tips")
                       a(href="#tips") Dicas e cuidados

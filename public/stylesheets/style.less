@@ -17,6 +17,25 @@ body {
 p{
 	color: @defaultColor;
 	font-size: @defaultFontSize;
+	strong, b{
+		color:@process;
+		&::selection {
+		background: @process; 
+		color: #fff;
+		}
+		&::-moz-selection {
+			background: @process; 
+			color: #fff;
+		}
+	}
+	&::selection {
+	background: @process; 
+	color: #fff;
+	}
+	&::-moz-selection {
+		background: @process; 
+		color: #fff;
+	}
 }
 
 a {
@@ -80,10 +99,18 @@ section{
 	text-align: center;
 	position: relative;
 	li{
-		position: absolute;
-	}
-	img{
+		position: absolute;	
 		width: 100%;
+		height: 400px;
+	}
+	.blond{
+		background: url('../images/loira.jpg') no-repeat top center transparent;
+	}
+	.black{
+		background: url('../images/negra.jpg') no-repeat center center transparent;
+	}
+	.brunet{
+		background: url('../images/morena.jpg') no-repeat top center transparent;
 	}
 }
 #process{
