@@ -242,3 +242,104 @@ section h2 {
 .footer img {
   padding-right: 20px;
 }
+/** MEDIAS QUEREIS **/
+@media (max-width: 991px) {
+  #full-header .logo {
+    margin: 10px auto;
+  }
+  .menu {
+    padding-top: 10px;
+  }
+  .menu li {
+    border: none!important;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li:hover {
+    transition: all 200ms ease-in;
+  }
+  .menu li a {
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .menu li a:hover {
+    color: #fff;
+  }
+  .menu .link-process {
+    background: #faaf3a;
+  }
+  .menu .link-process:hover {
+    background: #c97c05;
+  }
+  .menu .link-period {
+    background: #d9df20;
+  }
+  .menu .link-period:hover {
+    background: #828613;
+  }
+  .menu .link-tips {
+    background: #e66658;
+  }
+  .menu .link-tips:hover {
+    background: #bc2c1c;
+  }
+  #banner {
+    width: 750px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  #banner .blond {
+    background: url('../images/loira-menor.jpg') no-repeat top center transparent;
+  }
+  #banner .black {
+    background: url('../images/negra-menor.jpg') no-repeat top left transparent;
+  }
+  #banner .brunet {
+    background: url('../images/morena-menor.jpg') no-repeat top center transparent;
+  }
+  #box-calendario {
+    position: relative;
+  }
+  #box-calendario .seta {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -11px;
+    width: 22px;
+    padding: 0;
+  }
+  #box-calendario .seta a {
+    margin: 10px 0;
+  }
+  #box-calendario .seta-esquerda {
+    margin-left: -42px;
+  }
+  #box-calendario .seta-direita {
+    margin-left: 20px;
+  }
+  #calendario {
+    margin-top: 60px;
+  }
+  #tips img {
+    margin: 20px 0;
+  }
+}
+@media (max-width: 767px) {
+  #banner {
+    width: 100%;
+  }
+  #period .form-inline {
+    width: 100%;
+    text-align: center;
+  }
+  #period .form-inline select {
+    width: 50%;
+    margin: 10px auto;
+  }
+  .footer p b {
+    display: block;
+    margin-top: 20px;
+  }
+}

@@ -1,6 +1,5 @@
 var ConnectionHelper = require('./helpers/connection').ConnectionHelper;
 var PeriodController = require('./controllers/periodcontroller').PeriodController;
-var UserController 	 = require('./controllers/usercontroller').UserController;
 
 /**
  * Module dependencies.
@@ -32,11 +31,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var //Connection 	= new ConnectionHelper('db_fert', '127.0.0.1', 27017),
-	  Period 		  = new PeriodController(),
-	  User 		    = new UserController();
-
-//app.get('/', routes.index);
+var Period 		  = new PeriodController();
 
 app.get('/', function(req, res) {  
 

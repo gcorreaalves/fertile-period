@@ -4,7 +4,7 @@ var Calendar = function () {
 
 Calendar.prototype.setMonth = function(month){
 
-  var months = new Array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+  var months = new Array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Janeiro');
 
   return months[month-1];
 
@@ -89,7 +89,7 @@ Calendar.prototype.build = function(month, year, fertPeriod){
     var monthText = this.setMonth(month);
 
     this.calendarHTML = {
-      month : {monthNumber : month + '/' + year, monthText : this.setMonth(month)},
+      month : {monthNumber : month + '/' + year, monthText : monthText},
       days  : objDays
     }
 }
@@ -148,13 +148,11 @@ PeriodController.prototype.calcPeriod = function(data){
       ano = d[2];
 
   var cicle   = data.cicle,
-      qtDays;
+      qtDays,
+      baseCicle = 28,
+      baseQtDay = 14;
 
-  if(cicle == 28){
-    qtDays = 13;
-  }else if(cicle == 34){
-    qtDays = 16;
-  }
+    qtDays = (cicle - baseCicle) + baseQtDay;
 
   var dt          = new Date(ano, (parseInt(mes)-1), dia),
       fertPeriod  = {

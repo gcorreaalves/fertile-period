@@ -33,7 +33,11 @@ $(function() {
     }).done(function( data ) {
        callback(data);
     });
-  } 
+  };
+
+  $('.ciclo-menstrual').change(function(){
+    $('.menstruationDay').find('a').trigger('click');
+  });
 
   $("#calendario").on('click', '.dias a', function(e){
     e.preventDefault();

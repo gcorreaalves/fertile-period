@@ -274,3 +274,121 @@ section{
 		padding-right: 20px;
 	}
 }
+
+
+/** MEDIAS QUEREIS **/
+
+@media (max-width: 991px){
+	#full-header{
+		.logo{
+			margin:10px auto;
+		}
+	}
+
+	.menu{
+		padding-top: 10px;
+		li{
+			border:none!important;
+			margin:0;
+			padding:0;
+			&:hover{
+				transition: all 200ms ease-in;
+			}
+			a{
+				color:#ffffff;
+				display:block;
+				width:100%;
+				padding:10px 0;
+				&:hover{
+					color:#fff;
+				}
+			}
+		}
+		.link-process{
+			background: @process;
+			&:hover{
+				background: darken(@process, 20%);
+			}
+		}
+		.link-period{		
+			background: @period;
+			&:hover{				
+				background: darken(@period, 20%);
+			}
+		}
+		.link-tips{		
+			background: @tips;
+			&:hover{				
+				background: darken(@tips, 20%);
+			}
+		}
+	}
+
+	#banner{
+		width:750px;
+		height:300px;
+		margin:0 auto;
+		.blond{
+			background: url('../images/loira-menor.jpg') no-repeat top center transparent;
+		}
+		.black{
+			background: url('../images/negra-menor.jpg') no-repeat top left transparent;
+		}
+		.brunet{
+			background: url('../images/morena-menor.jpg') no-repeat top center transparent;
+		}
+	}
+
+	#box-calendario{
+		position: relative;
+		.seta{
+			position: absolute;
+			top:0;
+			left:50%;
+			margin-left: -11px;
+			width: 22px;
+			padding:0;
+			a{
+				margin: 10px 0;
+			}
+		}
+		.seta-esquerda{
+			margin-left: -42px;
+		}
+		.seta-direita{
+			margin-left: 20px;
+		}
+	}
+	#calendario{
+		margin-top: 60px;
+	}
+	#tips{
+		img{
+			margin: 20px 0;
+		}
+	}
+}
+@media (max-width: 767px){
+	#banner{
+		width: 100%;
+	}
+
+	#period{
+		.form-inline{
+			width: 100%;
+			text-align: center;
+			select{
+				width:50%;
+				margin:10px auto;
+			}
+		}
+	}
+	.footer{
+		p{
+			b{
+				display: block;
+				margin-top: 20px;
+			}
+		}
+	}
+}
